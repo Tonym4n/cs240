@@ -60,8 +60,10 @@ void sortBinaryTree(Node *root)
   while(swapped);
 }
 
-//sort each individual node in the tree -- by performing swaps with keys > than itself in left subtree, and then with keys < than itself in right subtree; 
-//this may lead to the key < a key in the leftsubtree hence the reason for the swap flag;
+//sort each individual node in the tree;
+//swap parent key if bigger key(s) found in left subtree, 
+//and then swap parent key if smaller key(s) found in right subtree;
+//may lead to the parent key being < a key in the leftsubtree hence the reason for the swap flag;
 //time complexity: O(logn) + O(logn) + O(log(n-1)) + O(log(n-1)) = O(logn)
 void sortBTree(Node *node, bool &swapped)
 {
