@@ -25,7 +25,7 @@ int main()
   startTime = time(nullptr);
   sortBinaryTree(root);
   endTime = time(nullptr) - startTime;
-  cout << "TIME TO SORT BINARY TREE: " << endTime << " seconds" << endl;
+  cout << "\nTIME TO SORT BINARY TREE: " << endTime << " seconds\n\n";
 
   cout << "Binary tree after sorting (inorder traversal): " << endl;
   inOrderTraversal(root);

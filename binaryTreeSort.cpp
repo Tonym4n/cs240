@@ -11,6 +11,7 @@ void inOrderTraversal(Node *node)
 }
 
 //randomized insertions into binary tree;
+//results in (maybe) unbalanced and/or unsorted tree;
 void insert(Node *node, int key)
 {
   assert(node != nullptr && "root cannot be nullptr");
@@ -19,14 +20,14 @@ void insert(Node *node, int key)
   if(child == 0)
   {
     if(node->left == nullptr)
-      node->left = new Node(key, nullptr, nullptr);
+      node->left = new Node(key);
     else
       insert(node->left, key);
   }
   else if(child == 1)
   {
     if(node->right == nullptr)
-      node->right = new Node(key, nullptr, nullptr);
+      node->right = new Node(key);
     else
       insert(node->right, key);
   }
@@ -44,66 +45,48 @@ void clear(Node *node)
 
 //----------------------------------------------------------------------------------
 //total time complexity for sortBinaryTree(): 
-//O(n) * O(logn) * O(logn) = O(nlog(^2)n)
+//O(logn)
 
-//wrapper function;
-//if a swap occurs, start again and sort from root;
-//time complexity: n sorts at most = O(n)
-void sortBinaryTree(Node *root)
-{
-  bool swapped;
-  do
-  {
-    swapped = false;
-    sortBTree(root, swapped);
-  }
-  while(swapped);
-}
-
-//sort each individual node in the tree;
-//swap parent key if bigger key(s) found in left subtree, 
-//and then swap parent key if smaller key(s) found in right subtree;
-//may lead to the parent key being < a key in the leftsubtree hence the reason for the swap flag;
-//time complexity: O(logn) + O(logn) + O(log(n-1)) + O(log(n-1)) = O(logn)
-void sortBTree(Node *node, bool &swapped)
+//sort the tree starting at node (top down sorting);
+//swap node with biggest key in left subtree;
+//swap node with smallest key in right subtree;
+//repeat with left child, then right child;
+//O(log(n-1)) + O(log(n-1)) + O(logn) + O(logn) = O(logn)
+void sortBinaryTree(Node *node)
 {
   if(node == nullptr)
     return;
   
-  sortBTree(node->left, swapped);
-  sortBTree(node->right, swapped);
+  swapWithBiggestInLeftSubtree(node, node->left);
+  swapWithSmallestInRightSubtree(node, node->right);
 
-  swapWithBiggestInLeftSubtree(node->left, node, swapped);
-  swapWithSmallestInRightSubtree(node->right, node, swapped);
+  sortBinaryTree(node->left);
+  sortBinaryTree(node->right);
 }
 
 //set parent->key to be the biggest compared with all nodes in the left subtree;
-//time complexity: O(logn) + O(logn) = O(logn)
-void swapWithBiggestInLeftSubtree(Node *child, Node *parent, bool &swapped)
+//time complexity: O(log(n-1)) + O(log(n-1)) = O(logn)
+void swapWithBiggestInLeftSubtree(Node *parent, Node *child)
 {
   if(child == nullptr)
     return;
-  else if(child->key > parent->key)
-  {
-    swap(child->key, parent->key);
-    swapped = true;
-  }
-  swapWithBiggestInLeftSubtree(child->left, parent, swapped);
-  swapWithBiggestInLeftSubtree(child->right, parent, swapped);
+  else if(parent->key < child->key)
+    swap(parent->key, child->key);
+
+  swapWithBiggestInLeftSubtree(parent, child->left);
+  swapWithBiggestInLeftSubtree(parent, child->right);
 }
 
 //set parent->key to be the smallest compared with all nodes in the right subtree;
-//time complexity: O(logn) + O(logn) = O(logn)
-void swapWithSmallestInRightSubtree(Node *child, Node *parent, bool &swapped)
+//time complexity: O(log(n-1)) + O(log(n-1)) = O(logn)
+void swapWithSmallestInRightSubtree(Node *parent, Node *child)
 {
   if(child == nullptr)
     return;
-  else if(child->key < parent->key)
-  {
-    swap(child->key, parent->key);
-    swapped = true;
-  }
-  swapWithSmallestInRightSubtree(child->left, parent, swapped);
-  swapWithSmallestInRightSubtree(child->right, parent, swapped);
+  else if(parent->key > child->key)
+    swap(parent->key, child->key);
+
+  swapWithSmallestInRightSubtree(parent, child->left);
+  swapWithSmallestInRightSubtree(parent, child->right);
 }
 //----------------------------------------------------------------------------------
