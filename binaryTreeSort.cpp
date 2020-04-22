@@ -45,7 +45,7 @@ void clear(Node *node)
 
 //----------------------------------------------------------------------------------
 //total time complexity for sortBinaryTree(): 
-//O(logn)
+//O(logn * logn)
 
 //sort the tree starting at node (top down sorting);
 //swap node with biggest key in left subtree;
