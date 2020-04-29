@@ -1,4 +1,4 @@
-# CS240 Team Project (BINGHAMTON UNIVERSITY, SPRING 2020)
+# CS240 Team Project (BINGHAMTON UNI, SPRING 2020)
 # Authors: Linda, Tony, and Farrukh
 
 Objectives:
