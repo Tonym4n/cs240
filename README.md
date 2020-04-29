@@ -1,7 +1,7 @@
 # CS240 Team Project (BINGHAMTON UNI, SPRING 2020)
 ## Authors: Linda, Tony, and Farrukh
 
-##### Objective:
+#### Objective:
 To analyze the in-place sorting time performance of 3 different data structures:
 - Binary trees
 - Queues
