@@ -4,7 +4,7 @@
 ### Objective:
 To analyze the sorting time performance of 3 different data structures:
 - Binary trees
-        - Queues
+- Queues
 - Doubly linked lists
   
 Implementation:
