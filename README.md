@@ -2,7 +2,7 @@
 ## Authors: Linda, Tony, and Farrukh
 
 ### Objective:
-To analyze the sorting time performance of 3 different data structures:
+To analyze the in-place sorting time performance of 3 different data structures:
 - Binary trees
 - Queues
 - Doubly linked lists
