@@ -1,11 +1,9 @@
 # CS240 Team Project (BINGHAMTON UNI, SPRING 2020)
-# Authors: Linda, Tony, and Farrukh
+## Authors: Linda, Tony, and Farrukh
 
-Objectives:
+Objective:
   To analyze the sorting time performance of 3 different data structures:
-    -binary trees
-    -queues
-    -doubly linked lists
+    -binary trees, queues, doubly linked lists
   
 Implementation:
   1. Insert psuedo random values into each data structure.
