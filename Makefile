@@ -1,11 +1,15 @@
-main:			main.o binaryTreeSort.o
-			g++ -g -Wall -std=c++17 main.o binaryTreeSort.o -o main
+CXX = g++
+CXXFLAGS = -g -Wall -std=c++17
 
-main.o:			main.cpp
-			g++ -g -Wall -std=c++17 -c main.cpp
+OBJS =	main.o		\
+	binaryTreeSort.o
 
-binaryTreeSort.o:	binaryTreeSort.cpp binaryTreeSort.hh
-			g++ -g -Wall -std=c++17 -c binaryTreeSort.cpp binaryTreeSort.hh
+main:			$(OBJS)
+			$(CXX) $^ -o $@
 
 clean:
-			rm -f *~ *.o *.gch main
+			rm -f *~ *.gch $(OBJS) main
+
+#dependencies;
+main.o:			main.cpp binaryTreeSort.hh
+binaryTreeSort.o:	binaryTreeSort.cpp binaryTreeSort.hh

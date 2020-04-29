@@ -17,7 +17,9 @@ int main()
   srand(time(nullptr));
   unsigned long long int startTime, endTime;
 
-  for(int n = 100; n < 1000001; n *= 10)
+  //compare the sorting times for binary trees, queues, and dlinkedlists;
+  //for n = 100, 1000, 10000, and 100000;
+  for(int n = 100; n < 100001; n *= 10)
   {
   	Node *root = new Node(0);
   	for(int i = 0, key; i < n; i++)
@@ -26,6 +28,10 @@ int main()
   		insert(root, key);
   	}
 
+
+
+
+
   	startTime = ::now();
   	sortBinaryTree(root);
   	endTime = ::now() - startTime;
@@ -33,5 +39,4 @@ int main()
 
   	clear(root);
   }
-  //inOrderTraversal(root);
 }
