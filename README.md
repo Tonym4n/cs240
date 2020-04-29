@@ -4,8 +4,8 @@
 ### Objective:
 To analyze the sorting time performance of 3 different data structures:
 - Binary trees
-    - Queues
-- Doubly linked lists
+            - Queues
+        - Doubly linked lists
   
 Implementation:
 1. Insert psuedo random values into each data structure.
