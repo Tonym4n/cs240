@@ -1,0 +1,4 @@
+n	binary_tree	queue		d_linked_list	
+100	0		1		0		ms
+1000	6		73		0		ms
+10000	384		7170		0		ms
