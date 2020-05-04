@@ -3,7 +3,7 @@
 
 #include "binaryTreeSort.hh"
 #include "queueSort.hh"
-
+#include "DLinkedList.hh"
 using namespace std;
 
 //return # of milliseconds since epoch;
@@ -22,10 +22,11 @@ int main()
 
   //compare the sorting times for binary trees, queues, and dlinkedlists;
   //for n = 100, 1000, 10000, and 100000;
-  for(int n = 100; n < 100001; n *= 10)
+  for(int n = 100; n < 10001; n *= 10)
   {
   	Node *root = new Node(0);
 	queue<int> q;
+	DLinkedList<int> dlink;
 	//initialize dlinkedlist;
 
 
@@ -34,11 +35,10 @@ int main()
   		value = rand() % 1000;
   		insert(root, value);
 		q.push(value);
+		dlink.insert(value);
 		//insert into dlinkedlist;
   	}
-
-
-  	startTime = ::now();
+	startTime = ::now();
   	sortBinaryTree(root);
   	btTime = ::now() - startTime;
 
@@ -47,14 +47,11 @@ int main()
   	qTime = ::now() - startTime;
 
 	startTime = ::now();
-	//sort dlinkedlist;
+	dlink.sort();
 	dllTime = ::now() - startTime;
 
 	printf("%d\t%llu\t\t%llu\t\t%llu\t\tms\n", n, btTime, qTime, dllTime);
-
-
 	clear(root);
 	q = queue<int>();
-	//clear dlinkedlist;
   }
 }
