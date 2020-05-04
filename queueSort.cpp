@@ -41,3 +41,12 @@ void sortQueue(std::queue<int> &q)
     	q.push(smallestValue); 
     }
 }
+
+void print(std::queue<int>& q)
+{
+	while(!q.empty())
+	{
+		std::cout << q.front() << " ";
+		q.pop();
+	}
+}
