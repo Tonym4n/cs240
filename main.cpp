@@ -58,6 +58,10 @@ int main()
 	startTime = ::now();
 	dlink.sort();
 	dllTime = ::now() - startTime;
+	
+	cout<<"Ordered Double Linked List\n";
+	cout<<dlink;
+	cout<<endl;
 
 	printf("%d\t%llu\t\t%llu\t\t%llu\t\tms\n", n, btTime, qTime, dllTime);
 	fprintf(outFile, "%d\t%llu\t\t%llu\t\t%llu\t\tms\n", n, btTime, qTime, dllTime);

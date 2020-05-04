@@ -75,6 +75,22 @@ class DLinkedList
 	    }
 	    while(swapped);
         }
+
+     template <typename U>
+     friend std::ostream & operator<<(std::ostream & os, const DLinkedList<U> & dll){
+      dll.display(os);
+      return os;
+     }
+
+      void display(std::ostream& out = std::cout) const
+       {
+            Node *node = head;
+            while(node != nullptr)
+            {
+                out << node->data << " ";
+                node = node->next;
+            }
+        }
 };
 
 
