@@ -1,7 +1,8 @@
-CXX = g++
-CXXFLAGS = -g -Wall -std=c++17
+CXX := g++
+CXXFLAGS := -g -Wall -std=c++17
+VPATH := sourceFiles
 
-OBJS =	main.o			\
+OBJS := main.o			\
 	binaryTreeSort.o	\
 	queueSort.o
 
@@ -9,7 +10,7 @@ main:			$(OBJS)
 			$(CXX) $^ -o $@
 
 clean:
-			rm -f *~ *.gch $(OBJS) main
+			rm -f *.o *~ *.gch main
 
 #dependencies;
 main.o:			main.cpp binaryTreeSort.hh queueSort.hh DLinkedList.hh
