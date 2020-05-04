@@ -1,6 +1,6 @@
 CXX := g++
 CXXFLAGS := -g -Wall -std=c++17
-VPATH := sourceFiles
+VPATH := . src
 
 OBJS := main.o			\
 	binaryTreeSort.o	\
