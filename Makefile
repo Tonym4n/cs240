@@ -11,6 +11,7 @@ main:			$(OBJS)
 
 clean:
 			rm -f *~ *.gch $(OBJS) main
+			rm -f *.o *~ $(OBJS) main
 
 #dependencies;
 main.o:			main.cpp binaryTreeSort.hh queueSort.hh DLinkedList.hh
