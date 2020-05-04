@@ -5,22 +5,39 @@
 #include <cassert>
 using namespace std;
 
-class Node
+template<typename T>
+class bTree
 {
-  public:
-    int key;
-    Node *left, *right;
-    Node() : key(0), left(nullptr), right(nullptr) {}
-    Node(int k) : key(k), left(nullptr), right(nullptr) {}
-    Node(int k, Node *l, Node *r) : key(k), left(l), right(r) {}
+private:
+	class Node
+	{
+	public:
+		T key;
+		Node *left, *right;
+		Node() : key(0), left(nullptr), right(nullptr) {}
+		Node(T k) : key(k), left(nullptr), right(nullptr) {}
+		Node(T k, Node *l, Node *r) : key(k), left(l), right(r) {}
+	};
+
+	Node *root;
+
+public:
+	bTree() : root(new Node()) {}
+	bTree(T k) : root(new Node(k)) {}
+	bTree(T k, Node *l, Node *r) : root(new Node(k, l, r)) {}
+
+	void clear() {clear(root);}
+	void insert(T key) {insert(root, key);};
+	void print() {inOrderTraversal(root);}
+	void sort() {sortBinaryTree(root);}
+
+protected:
+	void clear(Node *node);
+	void insert(Node *node, T key);
+	void inOrderTraversal(Node *node);
+	void sortBinaryTree(Node *node);
+	void swapWithBiggestInLeftSubtree(Node *parent, Node *child);
+	void swapWithSmallestInRightSubtree(Node *parent, Node *child);
 };
-
-void inOrderTraversal(Node *node);
-void insert(Node *node, int key);
-void clear(Node *node);
-
-void sortBinaryTree(Node *root);
-void swapWithBiggestInLeftSubtree(Node *parent, Node *child);
-void swapWithSmallestInRightSubtree(Node *parent, Node *child);
 
 #endif
