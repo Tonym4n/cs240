@@ -34,7 +34,6 @@ int main()
   	Node *root = new Node(0);
 	queue<int> q;
 	DLinkedList<int> dlink;
-	//initialize dlinkedlist;
 
 
   	for(int i = 0, value; i < n; i++)
@@ -43,7 +42,6 @@ int main()
   		insert(root, value);
 		q.push(value);
 		dlink.insert(value);
-		//insert into dlinkedlist;
   	}
 
 
@@ -59,9 +57,6 @@ int main()
 	dlink.sort();
 	dllTime = ::now() - startTime;
 	
-	cout<<"Ordered Double Linked List\n";
-	cout<<dlink;
-	cout<<endl;
 
 	printf("%d\t%llu\t\t%llu\t\t%llu\t\tms\n", n, btTime, qTime, dllTime);
 	fprintf(outFile, "%d\t%llu\t\t%llu\t\t%llu\t\tms\n", n, btTime, qTime, dllTime);
@@ -69,6 +64,6 @@ int main()
 
 	clear(root);
 	q = queue<int>();
-	//clear dlinkedlist;
+	dlink.~DLinkedList();
   }
 }
