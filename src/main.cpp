@@ -66,4 +66,6 @@ int main()
 		q = queue<int>();
 		dlink.~DLinkedList();
 	}
+
+	fclose(outFile);
 }

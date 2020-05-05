@@ -48,13 +48,13 @@ void bTree<T>::inOrderTraversal(Node *node)
 
 //----------------------------------------------------------------------------------
 //total time complexity for sortBinaryTree(): 
-//O(logn * logn)
+//Omega(logn * logn) | O(n^2)
 
 //sort the tree starting at node (top down sorting);
 //swap node with biggest key in left subtree;
 //swap node with smallest key in right subtree;
 //repeat with left child, then right child;
-//O(log(n-1)) + O(log(n-1)) + O(logn) + O(logn) = O(logn)
+//Omega(logn) * Omega(logn) | O(n) * O(n)
 template<typename T>
 void bTree<T>::sortBinaryTree(Node *node)
 {
@@ -69,7 +69,7 @@ void bTree<T>::sortBinaryTree(Node *node)
 }
 
 //set parent->key to be the biggest compared with all nodes in the left subtree;
-//time complexity: O(log(n-1)) + O(log(n-1)) = O(logn)
+//Omega(logn) | O(n)
 template<typename T>
 void bTree<T>::swapWithBiggestInLeftSubtree(Node *parent, Node *child)
 {
@@ -83,7 +83,7 @@ void bTree<T>::swapWithBiggestInLeftSubtree(Node *parent, Node *child)
 }
 
 //set parent->key to be the smallest compared with all nodes in the right subtree;
-//time complexity: O(log(n-1)) + O(log(n-1)) = O(logn)
+//Omega(logn) | O(n)
 template<typename T>
 void bTree<T>::swapWithSmallestInRightSubtree(Node *parent, Node *child)
 {
