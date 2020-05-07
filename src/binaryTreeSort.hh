@@ -27,17 +27,17 @@ public:
 	bTree(T k, Node *l, Node *r) : root(new Node(k, l, r)) {}
 
 	void clear() {clear(root);}
-	void insert(T key) {insert(root, key);};
+	void insert(T key) {insert(root, key);}
 	void print() {inOrderTraversal(root);}
-	void sort() {sortBinaryTree(root);}
+	void sort();
 
 protected:
 	void clear(Node *node);
 	void insert(Node *node, T key);
 	void inOrderTraversal(Node *node);
-	void sortBinaryTree(Node *node);
-	void swapWithBiggestInLeftSubtree(Node *parent, Node *child);
-	void swapWithSmallestInRightSubtree(Node *parent, Node *child);
+	void sortBinaryTree(Node *node, bool& swapped);
+	void swapWithBiggestInLeftSubtree(Node *parent, Node *child, bool& swapped);
+	void swapWithSmallestInRightSubtree(Node *parent, Node *child, bool& swapped);
 };
 
 #endif

@@ -18,7 +18,7 @@ void bTree<T>::insert(Node *node, T key)
 {
 	assert(node != nullptr && "node cannot be nullptr");
 
-	int child = rand() % 1;
+	int child = rand() % 2;
 	if(child == 0)
 	{
 		if(node->left == nullptr)
@@ -47,53 +47,70 @@ void bTree<T>::inOrderTraversal(Node *node)
 }
 
 //----------------------------------------------------------------------------------
-//total time complexity for sortBinaryTree(): 
-//Omega(logn * logn) | O(n^2)
+
+//bubble sort for binary tree;
+//Omega(n * logn * logn) | O(n * n * n)
+template<typename T>
+void bTree<T>::sort()
+{
+	bool swapped;
+	do
+	{
+		swapped = false;
+		sortBinaryTree(root, swapped);
+	}while(swapped);
+}
 
 //sort the tree starting at node (top down sorting);
 //swap node with biggest key in left subtree;
 //swap node with smallest key in right subtree;
 //repeat with left child, then right child;
-//Omega(logn) * Omega(logn) | O(n) * O(n)
+//Omega(logn * logn) | O(n * n)
 template<typename T>
-void bTree<T>::sortBinaryTree(Node *node)
+void bTree<T>::sortBinaryTree(Node *node, bool& swapped)
 {
 	if(node == nullptr)
 		return;
 
-	swapWithBiggestInLeftSubtree(node, node->left);
-	swapWithSmallestInRightSubtree(node, node->right);
+	swapWithBiggestInLeftSubtree(node, node->left, swapped);
+	swapWithSmallestInRightSubtree(node, node->right, swapped);
 
-	sortBinaryTree(node->left);
-	sortBinaryTree(node->right);
+	sortBinaryTree(node->left, swapped);
+	sortBinaryTree(node->right, swapped);
 }
 
 //set parent->key to be the biggest compared with all nodes in the left subtree;
 //Omega(logn) | O(n)
 template<typename T>
-void bTree<T>::swapWithBiggestInLeftSubtree(Node *parent, Node *child)
+void bTree<T>::swapWithBiggestInLeftSubtree(Node *parent, Node *child, bool& swapped)
 {
 	if(child == nullptr)
 		return;
 	else if(parent->key < child->key)
+	{
 		swap(parent->key, child->key);
+		swapped = true;
+	}
 
-	swapWithBiggestInLeftSubtree(parent, child->left);
-	swapWithBiggestInLeftSubtree(parent, child->right);
+	swapWithBiggestInLeftSubtree(parent, child->left, swapped);
+	swapWithBiggestInLeftSubtree(parent, child->right, swapped);
 }
 
 //set parent->key to be the smallest compared with all nodes in the right subtree;
 //Omega(logn) | O(n)
 template<typename T>
-void bTree<T>::swapWithSmallestInRightSubtree(Node *parent, Node *child)
+void bTree<T>::swapWithSmallestInRightSubtree(Node *parent, Node *child, bool& swapped)
 {
 	if(child == nullptr)
 		return;
 	else if(parent->key > child->key)
+	{
 		swap(parent->key, child->key);
+		swapped = true;
+	}
 
-	swapWithSmallestInRightSubtree(parent, child->left);
-	swapWithSmallestInRightSubtree(parent, child->right);
+	swapWithSmallestInRightSubtree(parent, child->left, swapped);
+	swapWithSmallestInRightSubtree(parent, child->right, swapped);
 }
 //----------------------------------------------------------------------------------
 
